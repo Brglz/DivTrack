@@ -8,6 +8,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -18,7 +22,15 @@ import { MatTableModule } from '@angular/material/table';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatInputModule,
+    // MatIconModule,
+    MatSortModule,
+    MatTableModule,
+    // MatToolbarModule,
+    MatPaginatorModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,

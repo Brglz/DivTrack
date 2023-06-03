@@ -3,52 +3,60 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Simple Table</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
+                    <div class="card-header card-header-danger" style="box-shadow: #b7ecb1;">
+                        <h4 class="card-title" style="color: #393e46; font-weight: bold;">Portfolio</h4>
+                        <p class="card-category" style="color: #505762;">Table of all stocks</p>
                     </div>
                     <div class="card-body body">
-                        <div>
-                            <mat-table #table [dataSource]="dataSource" class="mat-cell">
+                        <div class="left-table">
+                            <div class="form">
+                                <mat-form-field floatPlaceholder="never" color="accent">
+                                  <input matInput #filter placeholder="Search...">
+                                </mat-form-field>
+                              </div>
+                            <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
                                 <ng-container matColumnDef="ticker">
-                                    <th mat-header-cell *matHeaderCellDef>Ticker</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ticker</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.ticker }}</td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="totalQuantity">
-                                    <th mat-header-cell *matHeaderCellDef>Total Quantity</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Quantity</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.totalQuantity }}</td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="avgPrice">
-                                    <th mat-header-cell *matHeaderCellDef>Avg Price</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Price</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.avgPrice }}</td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="totalCost">
-                                    <th mat-header-cell *matHeaderCellDef>Total Cost</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Cost</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.totalCost }}</td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="weight">
-                                    <th mat-header-cell *matHeaderCellDef>Weight</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.weight }}</td>
                                 </ng-container>
 
                                 <ng-container matColumnDef="sector">
-                                    <th mat-header-cell *matHeaderCellDef>Sector</th>
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Sector</th>
                                     <td mat-cell *matCellDef="let stock">{{ stock.sector }}</td>
                                 </ng-container>
 
                                 <!-- Define table rows -->
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                <tr mat-row *matRowDef="let stock; columns: displayedColumns;"
-                                    (click)="logRowData(stock)" class="hoverable"></tr>
+                                <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns" class="mat-header-row cdk-header-row ng-star-inserted"></mat-header-row>
+                                <mat-row mat-row *matRowDef="let stock; columns: displayedColumns;"
+                                    (click)="logRowData(stock)" class="hoverable mat-row"></mat-row>
                             </mat-table>
+                            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0"
+                                [pageSize]="12" [pageSizeOptions]="[12, 20, 40, 100]">
+                            </mat-paginator>
                         </div>
                         <div>
                             <!-- <h6 class="card-category text-gray">KO</h6> -->
-                            <h4 class="card-title">KO</h4>
+                            <h4 class="card-title">{{selectedStock.ticker}}</h4>
                             <span>Shares: {{selectedStock.totalQuantity}}</span>
                             <span>Price: {{selectedStock.avgPrice}}</span>
                             <span>Cost: {{selectedStock.totalCost}}</span>
