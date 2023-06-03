@@ -1,0 +1,16 @@
+.tableContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverable:hover {
+  background-color: #76d7b88a; /* Choose your desired background color */
+  cursor: pointer;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+}
