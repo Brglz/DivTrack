@@ -1,11 +1,10 @@
 import { DataSource } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { StockDataService } from "app/services/stock-data.service";
 import { BehaviorSubject, Observable, merge, map } from "rxjs";
 import { StockService } from "./stock.service";
 
-export class ExampleDataSource extends DataSource<any> {
+export class StockDataSource extends DataSource<any> {
     _filterChange = new BehaviorSubject('');
   
     get filter(): string {

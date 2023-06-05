@@ -6,7 +6,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { TableListComponent } from '../../table-list/table-list.component';
-import { TypographyComponent } from '../../typography/typography.component';
+import { TradeHistoryComponent} from '../../trade-history/trade-history.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PercentPipe } from 'app/pipes/percent.pipe';
+import { DatePipe } from 'app/pipes/date.pipe';
 
 @NgModule({
   imports: [
@@ -46,12 +47,13 @@ import { PercentPipe } from 'app/pipes/percent.pipe';
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
-    TypographyComponent,
+    TradeHistoryComponent,
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    PercentPipe
+    PercentPipe,
+    DatePipe
   ]
 })
 

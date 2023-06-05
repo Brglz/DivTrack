@@ -34,7 +34,7 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    AdminLayoutComponent
     
   ],
   providers: [],

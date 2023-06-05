@@ -1,21 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { StockDataService } from 'app/services/stock-data.service';
-import {ExampleDataSource} from '../table-list/table-data-manupulation.component';
+import {StockDataSource} from '../table-list/table-data-manupulation.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { StockService } from './stock.service';
-import { fromEvent } from 'rxjs';
-
-export interface StockData {
-  ticker: string;
-  totalQuantity: number;
-  avgPrice: number;
-  totalCost: number;
-  shares: [];
-  weight: number;
-  sector: string;
-}
+import { fromEvent } from 'rxjs'; 
 
 @Component({
   selector: 'app-table-list',
@@ -25,7 +14,7 @@ export interface StockData {
 export class TableListComponent implements OnInit {
   displayedColumns: string[] = ['ticker', 'totalQuantity', 'avgPrice', 'totalCost', 'weight', 'sector'];
   selectedStockDisplayedColumns: string[] = ['date', 'quantity', 'price', 'cost'];
-  dataSource: ExampleDataSource | null;
+  dataSource: StockDataSource | null;
   selectedStockSource: MatTableDataSource<any>;
   selectedStock;
   stockData;
@@ -40,7 +29,7 @@ export class TableListComponent implements OnInit {
     this.stockData = this.stockDataService.getData()
     this.selectedStock = this.stockData[0];
     
-    this.dataSource = new ExampleDataSource(new StockService, this.paginator, this.sort);
+    this.dataSource = new StockDataSource(new StockService, this.paginator, this.sort);
     this.selectedStockSource = new MatTableDataSource(this.selectedStock.shares);
     fromEvent(this.filter.nativeElement, 'keyup')
     // .debounceTime(150)
