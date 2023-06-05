@@ -24,20 +24,20 @@ export interface StockData {
 })
 export class TableListComponent implements OnInit {
   displayedColumns: string[] = ['ticker', 'totalQuantity', 'avgPrice', 'totalCost', 'weight', 'sector'];
-  selectedStockDisplayedColumns: string[] = ['quantity', 'price', 'cost', 'date'];
+  selectedStockDisplayedColumns: string[] = ['date', 'quantity', 'price', 'cost'];
   dataSource: ExampleDataSource | null;
   selectedStockSource: MatTableDataSource<any>;
   selectedStock;
   stockData;
 
-  constructor(private stockDataService: StockDataService) { }
+  constructor(private stockDataService: StockService) { }
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('filter', { static: true }) filter: ElementRef;
 
   ngOnInit() {
-    this.stockData = this.stockDataService.getStockData()
+    this.stockData = this.stockDataService.getData()
     this.selectedStock = this.stockData[0];
     
     this.dataSource = new ExampleDataSource(new StockService, this.paginator, this.sort);

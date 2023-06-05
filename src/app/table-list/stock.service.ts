@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Stock } from '../models/stock';
 
 @Injectable({
@@ -8,58 +7,58 @@ import { Stock } from '../models/stock';
 })
 export class StockService {
   stockData:Stock[] = [
-    { ticker: 'KO', totalQuantity: 1, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer', shares: [
+    { ticker: 'KO', name: "Coca Cola",totalQuantity: 10, avgPrice: 10, totalCost: 100, weight: 0.05, sector: 'Consumer', shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'IBM', totalQuantity: 2, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'IBM',name: "International Business Machines Corporation", totalQuantity: 2, avgPrice: 10, totalCost: 100, weight: 0.094, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'HDV', totalQuantity: 3, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'HDV',name: "iShares Core High Dividend ETF", totalQuantity: 3, avgPrice: 10, totalCost: 100, weight: 0.082, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'O', totalQuantity: 4, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'O',name: 'Realty Income Corporation', totalQuantity: 4, avgPrice: 10, totalCost: 100, weight: 0.1012, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'MCD', totalQuantity: 5, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'MCD',name:"McDonald's Corporation", totalQuantity: 5, avgPrice: 10, totalCost: 100, weight: 0.014547, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'AAPL', totalQuantity: 6, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'AAPL',name: 'Apple Inc.', totalQuantity: 6, avgPrice: 10, totalCost: 100, weight: 0.0899, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'MSFT', totalQuantity: 7, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'MSFT',name:'Microsoft Corporation', totalQuantity: 7, avgPrice: 10, totalCost: 100, weight: 0.0292, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'KR', totalQuantity: 8, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'KR', name:'Microsoft Corporation', totalQuantity: 8, avgPrice: 10, totalCost: 100, weight: 0.0415, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.058, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'AVGO',name:'Microsoft Corporation', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.02, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.02, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.02, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.0334, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.0212, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.02245, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.012, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
-    ,{ ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    ,{ ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.071, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] },
-    { ticker: 'AVGO', totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 25, sector: 'Consumer' , shares: [
+    { ticker: 'AVGO', name:'Microsoft Corporation',totalQuantity: 9, avgPrice: 10, totalCost: 100, weight: 0.051, sector: 'Consumer' , shares: [
       {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}, {quantity: 5, price: 10, cost: 50, date:"10.06.2023"}
     ] }
   ]
@@ -106,5 +105,8 @@ export class StockService {
     console.log(id);
   }
 
+  getData() {
+    return this.stockData;
+  }
 
 }

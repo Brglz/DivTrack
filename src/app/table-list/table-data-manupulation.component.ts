@@ -25,7 +25,6 @@ export class ExampleDataSource extends DataSource<any> {
       super();
       // Reset to the first page when the user changes the filter.
       this._filterChange.subscribe(() => this._paginator.pageIndex = 0);
-      console.log(_exampleDatabase);
       
     }
   
@@ -66,25 +65,27 @@ export class ExampleDataSource extends DataSource<any> {
   
   
     /** Returns a sorted copy of the database data. */
-    sortData(data: any[]): any[] {//stel
+    sortData(data: any[]): any[] {
       if (!this._sort.active || this._sort.direction === '') {
         return data;
       }
-  
+      
       return data.sort((a, b) => {
         let propertyA: number | string = '';
         let propertyB: number | string = '';
-  
+
         switch (this._sort.active) {
-          case 'id': [propertyA, propertyB] = [a.ticker, b.ticker]; break;
-          case 'title': [propertyA, propertyB] = [a.shares, b.shares]; break;
-          case 'state': [propertyA, propertyB] = [a.cost, b.cost]; break;
-          case 'url': [propertyA, propertyB] = [a.avgPrice, b.avgPrice]; break;
+          case 'ticker': [propertyA, propertyB] = [a.ticker, b.ticker]; break;
+          case 'totalQuantity': [propertyA, propertyB] = [a.totalQuantity, b.totalQuantity]; break;
+          case 'avgPrice': [propertyA, propertyB] = [a.avgPrice, b.avgPrice]; break;
+          case 'totalCost': [propertyA, propertyB] = [a.totalCost, b.totalCost]; break;
+          case 'weight': [propertyA, propertyB] = [a.weight, b.weight]; break;
+          case 'sector': [propertyA, propertyB] = [a.sector, b.sector]; break;
         }
   
         const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
         const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-  
+        
         return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
       });
     }

@@ -20,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PercentPipe } from 'app/pipes/percent.pipe';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    PercentPipe
   ]
 })
 
