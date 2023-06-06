@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
-import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { DividendComponent} from '../../dividend/dividend.component';
 import { TableListComponent } from '../../table-list/table-list.component';
 import { TradeHistoryComponent} from '../../trade-history/trade-history.component';
 import { IconsComponent } from '../../icons/icons.component';
@@ -22,6 +22,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PercentPipe } from 'app/pipes/percent.pipe';
 import { DatePipe } from 'app/pipes/date.pipe';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { PieChartComponent } from 'app/pie-chart/pie-chart.component';
 
 @NgModule({
   imports: [
@@ -42,10 +44,11 @@ import { DatePipe } from 'app/pipes/date.pipe';
     // MatToolbarModule,
     MatPaginatorModule,
     ReactiveFormsModule,
+    NgApexchartsModule
   ],
   declarations: [
     DashboardComponent,
-    UserProfileComponent,
+    DividendComponent,
     TableListComponent,
     TradeHistoryComponent,
     IconsComponent,
@@ -53,7 +56,8 @@ import { DatePipe } from 'app/pipes/date.pipe';
     NotificationsComponent,
     UpgradeComponent,
     PercentPipe,
-    DatePipe
+    DatePipe,
+    PieChartComponent
   ]
 })
 

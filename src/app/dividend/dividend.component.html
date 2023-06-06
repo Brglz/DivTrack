@@ -1,0 +1,109 @@
+<div class="main-content" style="font-weight: 400;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="height: 1000px;">
+                    <div class="card-header card-header-danger" style="background: none; background-color: #86BAFE !important;
+                  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%) !important;">
+                        <h4 class="card-title" style="color: #393e46; font-weight: bold;">Dividends</h4>
+                        <p class="card-category" style="color: #505762;">All dividend info</p>
+                    </div>
+                    <div class="card-body body">
+                        <div class="left-table">
+                            <div class="form">
+                                <mat-form-field floatPlaceholder="never" color="accent">
+                                    <input matInput #filter placeholder="Search...">
+                                </mat-form-field>
+                            </div>
+                            <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort
+                                matSortActive="exDivDate" matSortDirection="desc" matSortDisableClear>
+                                <ng-container matColumnDef="ticker">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef
+                                        mat-sort-header>Ticker</mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let stock">{{ stock.ticker }}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="shares">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef
+                                        mat-sort-header>Shares</mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let stock">{{ stock.shares}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="divPerShare">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef
+                                        mat-sort-header>Div/share</mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let stock">{{ stock.divPerShare |
+                                        currency}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="totalDiv">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef
+                                        mat-sort-header>Dividend</mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let stock">{{ stock.totalDiv | currency}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="exDivDate">
+                                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header>Ex-Dividend
+                                        Date</mat-header-cell>
+                                    <mat-cell mat-cell *matCellDef="let stock"><span [ngClass]="{'exDivDate-attention': isDateWithinRange(stock.exDivDate, 14),
+                                  'exDivDate-danger': isDateWithinRange(stock.exDivDate, 7)
+                                }">{{ stock.exDivDate | date}}</span></mat-cell>
+                                </ng-container>
+
+                                <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"
+                                    class="mat-header-row cdk-header-row ng-star-inserted"
+                                    style="background-color: #C2DCFE;"></mat-header-row>
+                                <mat-row mat-row *matRowDef="let stock; columns: displayedColumns;"
+                                    (click)="logRowData(stock)" class="hoverable mat-row"></mat-row>
+                            </mat-table>
+                            <div style="display: flex;
+                            justify-content: space-between; margin-top: 2%;">
+                                <div style="width: 30%;">
+                                    <div>
+                                        <span class="exDivDate-attention-legend"></span> <span style="margin-left: 2%">Ex-Div date in next 14 days</span>
+                                    </div>
+                                    <div>
+                                        <span class="exDivDate-danger-legend"></span> <span style="margin-left: 2%">Ex-Div date in next 7 days</span>
+                                    </div>
+                                </div>
+                                <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0"
+                                    [pageSize]="12" [pageSizeOptions]="[12, 20, 40, 100]">
+                                </mat-paginator>
+                            </div>
+
+                        </div>
+                        <div class="right-table">
+                            <div class="card div-card">
+                                <h3 class="card-title">Dividend Data</h3>
+                                <div class="div-data">
+                                    <div class="div-data-row">
+                                        <h5>Anual Dividend:</h5>
+                                        <h5>{{275.44 | currency}}</h5>
+                                    </div>
+                                    <div class="div-data-row">
+                                        <h5>Monthly Dividend:</h5>
+                                        <h5>{{275.44/12 | currency}}</h5>
+                                    </div>
+                                    <div class="div-data-row">
+                                        <h5>Portfolio Yield</h5>
+                                        <h5>{{0.0298 | percent}}</h5>
+                                    </div>
+                                    <div class="div-data-row">
+                                        <h5>Portfolio Growth</h5>
+                                        <h5>{{0.0974 | percent}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="height: 50%;">
+                                <!-- <h3 class="card-title">Dividend Distribution</h3> -->
+                                <div class="div-data">
+                                    <app-pie-chart style="width: 100%; height: 60%; margin: 0 auto;"></app-pie-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

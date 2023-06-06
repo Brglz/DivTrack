@@ -1,7 +1,7 @@
 .tableContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hoverable:hover {
@@ -17,6 +17,7 @@
   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%);
   border-color: lightgray;
   width: 65%;
+  height: 60%;
 }
 
 .mat-cell {
@@ -26,7 +27,7 @@
 .mat-header-row {
   min-height: 30px;
   text-align: center;
-  background-color:  rgb(114,214,181,0.25);
+  background-color: rgb(114, 214, 181, 0.25);
   border-radius: 5px;
 }
 
@@ -41,47 +42,47 @@
   padding: 2% 3%;
 }
 
-.mat-cell:nth-child(1),
+/* .mat-cell:nth-child(1),
 .mat-header-cell:nth-child(1){
   flex: 0 0 14%;
   border: 0px;
   text-align: center;
 
-}
+} */
 
-.mat-cell:nth-child(2),
+/* .mat-cell:nth-child(2),
 .mat-header-cell:nth-child(2){
   flex: 0 0 18%;
   border: 0px;
   text-align: center;
 
-}
+} */
 
-.mat-cell:nth-child(3),
+/* .mat-cell:nth-child(3),
 .mat-header-cell:nth-child(3){
   flex: 0 0 18%;
   border: 0px;
   text-align: center;
 
-}
+} */
 
-.mat-cell:nth-child(4),
+/* .mat-cell:nth-child(4),
 .mat-header-cell:nth-child(4){
   flex: 0 0 18%;
   border: 0px;
   text-align: center;
 
-}
+} */
 
-.mat-cell:nth-child(5),
+/* .mat-cell:nth-child(5),
 .mat-header-cell:nth-child(5){
   flex: 0 0 18%;
   border: 0px;
   text-align: center;
 
-}
+} */
 
-.mat-cell:nth-child(6),
+/* .mat-cell:nth-child(6),
 .mat-header-cell:nth-child(6){
   flex: 0 0 18%;
   border: 0px;
@@ -94,9 +95,7 @@
   flex: 0 0 18%;
   border: 0px;
   text-align: center;
-
-
-}
+} */
 
 .mat-sort-header-container {
   margin-left: 30%;
@@ -105,6 +104,7 @@
 .right-table {
   margin-right: 1%;
   width: 30%;
+  height: 60%;
 }
 
 h1 {
@@ -112,8 +112,13 @@ h1 {
   margin-bottom: 0;
 }
 
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
 
-.mat-cell2:nth-child(1),
+
+/* .mat-cell2:nth-child(1),
 .mat-header-cell2:nth-child(1){
   flex: 0 0 45%;
   border: 0px;
@@ -136,19 +141,20 @@ h1 {
   flex: 0 0 17%;
   border: 0px;
   text-align: center;
-}
+} */
 
 .mat-cell2-footer {
   max-height: 30px;
 }
 
-h6 { 
+h6 {
   text-align: center;
   margin: 0 0 5% 0;
 }
 
 h5 {
   margin: 0;
+  font-weight: 400;
 }
 
 .card-title {
@@ -175,7 +181,7 @@ h5 {
   flex: 0 0 6% !important;
   padding-left: 1%;
   margin-left: -1%;
-  
+
 }
 
 .sell {
@@ -183,15 +189,34 @@ h5 {
   font-weight: 400;
   border: 1px solid;
   border-radius: 5px;
-  background-color: #FEBB34;
+  background-color: #E9C649;
   flex: 0 0 7% !important;
   padding-left: 1%;
   margin-left: -1%;
 }
 
-.filter-type {
+.div-card {
+  height: 40%;
   display: flex;
-  align-items: baseline;
+  justify-content: space-evenly;
+  margin-top: 3%;
+}
+
+.div-data {
+  height: 45%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.div-data-row {
+  display: flex;
+  /* justify-content: space-evenly; */
+  justify-content: space-between;
+  width: 80%;
+  /* align-items: center; */
+  /* justify-content: center; */
+  margin: 0 auto;
 }
 
 .type-buttons-container {
@@ -201,42 +226,36 @@ h5 {
   margin-left: 3%;
 }
 
-.dividend-btn {
-  color: white;
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: #73BF78;
+.exDivDate-attention {
+  border: 1px solid white;
   font-weight: 400;
-  padding: 1.5%;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%);
+  border-radius: 5px; 
+  background-color: #FECF72;
+  padding: 0% 2%;
 }
 
-.buy-btn {
+.exDivDate-danger {
   color: white;
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: #70BFFF;
+  border: 1px solid white;
   font-weight: 400;
-  padding: 1% 6%;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%);
+  border-radius: 5px; 
+  background-color: #e32636;
+  padding: 0% 2%;
 }
 
-.sell-btn {
-  color: white;
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: #FEBB34;
+.exDivDate-attention-legend {
+  border: 1px solid white;
   font-weight: 400;
-  padding: 1% 6%;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%);
+  border-radius: 5px; 
+  background-color: #FECF72;
+  padding: 0.3% 4.5%;
 }
 
-.all-btn {
-  color: black;
+.exDivDate-danger-legend {
+  color: white;
+  border: 1px solid white;
   font-weight: 400;
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: white;
-  padding: 1% 6%;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(13 13 13 / 15%);
+  border-radius: 5px; 
+  background-color: #e32636;
+  padding: 0.3% 4.5%;
 }
