@@ -1,0 +1,4 @@
+<div class="progress-bar">
+    <div class="progress-bar__fill" [style.width.%]="(values.currentValue / values.maxValue) * 100"></div>
+    <div class="progress-bar__text">{{ values.currentValue }} / {{ values.maxValue }} per {{ values.period }}</div>
+</div>

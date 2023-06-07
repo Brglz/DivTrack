@@ -18,6 +18,14 @@ export class DividendComponent implements OnInit {
   selectedStockSource: MatTableDataSource<any>;
   tradeData;
   chartValues: [];
+  progressBarValues = [
+    {currentValue: 27.44, maxValue: 25, period: "Month"},
+    {currentValue: 27.44, maxValue: 50, period: "Month"},
+    {currentValue: 27.44, maxValue: 100, period: "Month"},
+    {currentValue: 329.28, maxValue: 250, period: "Year"},
+    {currentValue: 329.28, maxValue: 500, period: "Year"},
+    {currentValue: 329.28, maxValue: 1000, period: "Year"}
+  ]
 
   constructor(private dividendDataService: DividendService) { }
 
@@ -44,15 +52,11 @@ export class DividendComponent implements OnInit {
   }
 
   isDateWithinRange(date: string, days:number): boolean {
-    const currentDate = new Date(); // 06.06.2023
-    const dateInTHeFuture = new Date(); //20.06.2023
+    const currentDate = new Date();
+    const dateInTHeFuture = new Date();
     dateInTHeFuture.setDate(dateInTHeFuture.getDate() + days);
     const [day,month,year] = date.split('.')
-    const selectedDate = new Date(`${month}.${day}.${year}`); //19.06.2023
-    console.log(selectedDate ,currentDate > selectedDate, selectedDate >= dateInTHeFuture);
-    
-
-    // 06.06.2023 > 19.06.2023 && 19.06.2023 >= 20.06.2023
+    const selectedDate = new Date(`${month}.${day}.${year}`);
     
     return currentDate < selectedDate && selectedDate <= dateInTHeFuture;
   }

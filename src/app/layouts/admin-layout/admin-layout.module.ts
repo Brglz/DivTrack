@@ -24,6 +24,8 @@ import { PercentPipe } from 'app/pipes/percent.pipe';
 import { DatePipe } from 'app/pipes/date.pipe';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { PieChartComponent } from 'app/pie-chart/pie-chart.component';
+import { ProgressBarComponent } from 'app/progress-bar/progress-bar.component';
+import { BarChartComponent } from 'app/bar-chart/bar-chart.component';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { PieChartComponent } from 'app/pie-chart/pie-chart.component';
     UpgradeComponent,
     PercentPipe,
     DatePipe,
-    PieChartComponent
+    PieChartComponent,
+    ProgressBarComponent,
+    BarChartComponent
   ]
 })
 

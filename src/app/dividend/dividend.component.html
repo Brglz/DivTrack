@@ -60,15 +60,21 @@
                             justify-content: space-between; margin-top: 2%;">
                                 <div style="width: 30%;">
                                     <div>
-                                        <span class="exDivDate-attention-legend"></span> <span style="margin-left: 2%">Ex-Div date in next 14 days</span>
+                                        <span class="exDivDate-attention-legend"></span> <span
+                                            style="margin-left: 2%">Ex-Div date in next 14 days</span>
                                     </div>
                                     <div>
-                                        <span class="exDivDate-danger-legend"></span> <span style="margin-left: 2%">Ex-Div date in next 7 days</span>
+                                        <span class="exDivDate-danger-legend"></span> <span
+                                            style="margin-left: 2%">Ex-Div date in next 7 days</span>
                                     </div>
                                 </div>
                                 <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0"
-                                    [pageSize]="12" [pageSizeOptions]="[12, 20, 40, 100]">
+                                    [pageSize]="12" [pageSizeOptions]="[12]">
                                 </mat-paginator>
+                            </div>
+
+                            <div style="margin: 0 auto; margin-top: 5%; margin-left: -5%;">
+                                <app-bar-chart></app-bar-chart>
                             </div>
 
                         </div>
@@ -99,6 +105,40 @@
                                 <div class="div-data">
                                     <app-pie-chart style="width: 100%; height: 60%; margin: 0 auto;"></app-pie-chart>
                                 </div>
+                            </div>
+                            <div class="card" style="height: 50%;">
+                                <h3 class="card-title">Dividend Progress</h3>
+                                <div *ngFor="let item of progressBarValues">
+                                    <app-progress-bar [values]="item"></app-progress-bar>
+                                  </div>
+                                
+
+                                <!-- <div class="progress-bar" style="margin-top: 5%;">
+                                    <div class="progress-bar__fill" [style.width.%]="(27.44 / 50) * 100">
+                                    </div>
+                                    <div class="progress-bar__text">{{ 27.44 | currency }} / {{ 50 | currency }} per Month</div>
+                                </div>
+                                <div class="progress-bar" style="margin-top: 5%;">
+                                    <div class="progress-bar__fill" [style.width.%]="(47.44 / 50) * 100">
+                                    </div>
+                                    <div class="progress-bar__text">{{ 47.44 | currency }} / {{ 50 | currency }} per Month</div>
+                                </div>
+                                <div class="progress-bar" style="margin-top: 5%;">
+                                    <div class="progress-bar__fill" [style.width.%]="(17.44 / 50) * 100">
+                                    </div>
+                                    <div class="progress-bar__text">{{ 17.44 | currency }} / {{ 50 | currency }} per Month</div>
+                                </div>
+                                <div class="progress-bar" style="margin-top: 5%;">
+                                    <div class="progress-bar__fill" [style.width.%]="(37.44 / 50) * 100">
+                                    </div>
+                                    <div class="progress-bar__text">{{ 37.44 | currency }} / {{ 50 | currency }} per Month</div>
+                                </div>
+
+                                <div class="progress-bar" style="margin-top: 5%;">
+                                    <div class="progress-bar__fill" [style.width.%]="(37.44 / 50) * 100">
+                                    </div>
+                                    <div class="progress-bar__text">{{ 37.44 | currency }} / {{ 50 | currency }} per Month</div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
